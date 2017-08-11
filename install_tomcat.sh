@@ -10,6 +10,5 @@ install_tomcat(){
 
 }
 
-/bin/bash -x install_jdk.sh
 tomcat_dir=`ps -ef|egrep tomcat|egrep -v grep|head -n 1|awk -F"=| " '{print $(NF-4)}'`
-test -z ${tomcat_dir} || install_tomcat
+test -z ${tomcat_dir} || ( /bin/bash -x install_jdk.sh ;  install_tomcat )
